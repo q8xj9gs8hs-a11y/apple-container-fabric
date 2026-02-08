@@ -21,7 +21,7 @@ sudo container system dns create fabric-dns
 ```
 5. Set fabric-dns to the default DNS
 ```
-container system property set dns.domain fabric-network
+container system property set dns.domain fabric-dns
 ```
 6. Create a custom network for an isolated container network
 ```

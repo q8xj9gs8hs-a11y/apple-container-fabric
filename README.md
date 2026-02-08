@@ -33,7 +33,7 @@ mkdir -p ~/.fabric-config
 cd ~/.fabric-config
 
 # Run the fabric container to initiate the setup
-container run -it --rm -v "${HOME}/.fabric-config:/root/.config/fabric kayvan/fabric --setup
+container run -it --rm -v "${HOME}/.fabric-config:/root/.config/fabric" kayvan/fabric --setup
 
 # Continue through the setup process for installing patterns, strategies, and AI vendor
 ```

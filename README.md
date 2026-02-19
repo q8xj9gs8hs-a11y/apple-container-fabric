@@ -2,32 +2,38 @@
 Run Fabric-AI REST API and MCP server in containers with [apple/container](https://github.com/apple/container.git)
 
 ## Quickest Setup
-1. Clone this repository for the MCP server Containerfile
+### First, setup a custom `container` DNS and `network`:
+1. Create a dustom DNS domain for hostname resolution:
+```
+sudo container system dns create fabric-dns
+```
+2. Set `fabric-dns` to the default DNS:
+```
+container system property set dns.domain fabric-dns
+```
+3. Create a custom network for an isolated container network:
+```
+container network create fabric-network
+```
+
+### Install images and configure fabric
+4. Clone this repository for the MCP server Containerfile:
 ```
 git clone https://github.com/q8xj9gs8hs-a11y/apple-container-fabric.git
 cd apple-container-fabric
 ```
-2. Build the image
+
+5. Build the image:
 ```
 container build -t fabric-mcp .
 ```
-3. [Pull the image](https://hub.docker.com/r/jimscard/fabric-yt/tags) for the REST API container
+
+6. [Pull the image](https://hub.docker.com/r/jimscard/fabric-yt/tags) for the REST API container:
 ```
 container image pull jimscard/fabric-yt:latest
 ```
-4. Create a dustom DNS domain for hostname resolution
-```
-sudo container system dns create fabric-dns
-```
-5. Set `fabric-dns` to the default DNS
-```
-container system property set dns.domain fabric-dns
-```
-6. Create a custom network for an isolated container network
-```
-container network create fabric-network
-```
-7. Create fabric's configuration for the bind mount
+
+7. Create fabric's configuration for the bind mount:
 ```
 mkdir -p "${HOME}/.fabric-config"
 cd "${HOME}/.fabric-config"
@@ -37,13 +43,16 @@ container run -it --rm -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard
 
 # Continue through the setup process for installing patterns, strategies, and configuring your AI vendor and model
 ```
-8. Run both containers
+
+### Start the REST API and MCP server containers
+8. Run both containers:
 ```
 container run --rm -d --name fabric-server --network fabric-network -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard/fabric-yt
 
 container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fabric-config:/root/.config/fabric" -p 8000:8000 -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp
 ```
-9. Configure your `mcp.json`
+
+9. Configure your `mcp.json`:
 ```json
 "fabric": {
   "url": "http://localhost:8000/message"

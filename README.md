@@ -2,7 +2,7 @@
 run fabric-ai rest api and mcp server in containers with apple container
 
 # Quickest Setup
-1. Clone this repository for the MCP server Dockerfile
+1. Clone this repository for the MCP server Containerfile
 ```
 git clone https://github.com/q8xj9gs8hs-a11y/apple-container-fabric.git
 cd apple-container-fabric
@@ -55,7 +55,7 @@ Tasklist:
 - [ ] Guide through workflow involved
 - [ ] Add `docker-compose.yml` for use with `container-compose` wrapper
 - [ ] Deep dive into networking involved
-- [ ] Customizing Dockerfile `ENTRYPOINT`
+- [ ] Customizing Containerfile `ENTRYPOINT`
 - [ ] Testing and verification techniques, debugging
 - [ ] Add system prompt to complement this workflow
 - [ ] Additional notes and nuances

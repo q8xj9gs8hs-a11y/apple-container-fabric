@@ -1,7 +1,7 @@
 # apple-container-fabric
 Run Fabric-AI REST API and MCP server in containers with [apple/container](https://github.com/apple/container.git)
 
-# Quickest Setup
+## Quickest Setup
 1. Clone this repository for the MCP server Containerfile
 ```
 git clone https://github.com/q8xj9gs8hs-a11y/apple-container-fabric.git
@@ -49,10 +49,8 @@ container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fa
   "url": "http://localhost:8000/message"
 }
 ```
-# System Prompt
-Use this system prompt with your MCP client to get the best results: [system_prompt.md](system_prompt.md)
 
-# Run as `--transport stdio`
+## Run as `--transport stdio`
 Override the default `fabric-mcp` command without mapping the port:
 ```
 container run --rm -d --network fabric-network -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp --transport stdio
@@ -80,9 +78,10 @@ Your `mcp.json` will be configured like so:
 }
 ```
 
----
+## System Prompt
+Use this system prompt with your MCP client to get the best results: [system_prompt.md](system_prompt.md)
 
-# Tasklist:
+## Tasklist:
 - [ ] Deep dive into `container run` commands and syntax
 - [ ] Guide through workflow and networking involved
 - [x] Customizing Containerfile `ENTRYPOINT`

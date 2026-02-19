@@ -54,8 +54,12 @@ container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fa
 
 9. Configure your `mcp.json`:
 ```json
-"fabric": {
-  "url": "http://localhost:8000/message"
+{
+  "mcpServers": {
+    "fabric": {
+      "url": "http://localhost:8000/message"
+    }
+  }
 }
 ```
 

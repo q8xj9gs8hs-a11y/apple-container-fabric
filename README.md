@@ -57,3 +57,4 @@ Tasklist:
 - [ ] Testing and verification techniques, debugging
 - [ ] Add system prompt to complement this workflow
 - [ ] Additional notes and nuances
+- [ ] Running the MCP server as `stdio`

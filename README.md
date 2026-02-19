@@ -52,9 +52,7 @@ container run --rm -d --name fabric-mcp --network fabric-network -p 8000:8000 -e
 
 Tasklist:
 - [ ] Deep dive into `container run` commands and syntax
-- [ ] Guide through workflow involved
-- [ ] Add `docker-compose.yml` for use with `container-compose` wrapper
-- [ ] Deep dive into networking involved
+- [ ] Guide through workflow and networking involved
 - [x] Customizing Containerfile `ENTRYPOINT`
 - [ ] Testing and verification techniques, debugging
 - [ ] Add system prompt to complement this workflow

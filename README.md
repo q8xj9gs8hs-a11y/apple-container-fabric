@@ -29,10 +29,10 @@ container network create fabric-network
 ```
 7. Create fabric's configuration for the bind mount
 ```
-mkdir -p ~/.fabric-config
-cd ~/.fabric-config
+mkdir -p "${HOME}/.fabric-config"
+cd "${HOME}/.fabric-config"
 
-# Run the fabric container to initiate the setup
+# Run `fabric --setup` in a container
 container run -it --rm -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard/fabric-yt fabric --setup
 
 # Continue through the setup process for installing patterns, strategies, and configuring your AI vendor and model
@@ -41,7 +41,7 @@ container run -it --rm -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard
 ```
 container run --rm -d --name fabric-server --network fabric-network -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard/fabric-yt
 
-container run --rm -d --name fabric-mcp --network fabric-network -p 8000:8000 -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp --transport http --port 8000 --host 0.0.0.0
+container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fabric-config:/root/.config/fabric" -p 8000:8000 -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp
 ```
 9. Configure your `mcp.json`
 ```json
@@ -52,6 +52,34 @@ container run --rm -d --name fabric-mcp --network fabric-network -p 8000:8000 -e
 # System Prompt
 Use this system prompt with your MCP client to get the best results: [system_prompt.md](system_prompt.md)
 
+# Run as `--transport stdio`
+Override the default `fabric-mcp` command without mapping the port:
+```
+container run --rm -d --network fabric-network -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp --transport stdio
+```
+Your `mcp.json` will be configured like so:
+```json
+{
+  "mcpServers": {
+    "fabric": {
+      "command": "container",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network", "fabric-network",
+        "-v", "${HOME}/.fabric-config:/root/.config/fabric",
+        "-e", "FABRIC_BASE_URL",
+        "fabric-mcp",
+        "--transport", "stdio"
+      ],
+      "env": {
+        "FABRIC_BASE_URL": "http://fabric-server:8080"
+    }
+  }
+}
+```
+
 ---
 
 # Tasklist:
@@ -61,4 +89,4 @@ Use this system prompt with your MCP client to get the best results: [system_pro
 - [ ] Testing and verification techniques, debugging
 - [x] Add system prompt to complement this workflow
 - [ ] Additional notes and nuances
-- [ ] Running the MCP server as `stdio`
+- [x] Running the MCP server as `stdio`

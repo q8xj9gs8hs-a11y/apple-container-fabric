@@ -86,6 +86,7 @@ Your `mcp.json` will be configured like so:
       ],
       "env": {
         "FABRIC_BASE_URL": "http://fabric-server:8080"
+      }
     }
   }
 }

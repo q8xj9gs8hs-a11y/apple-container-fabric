@@ -59,8 +59,8 @@ container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fa
 }
 ```
 
-## Run as `--transport stdio`
-Override the default `fabric-mcp` command without mapping the port:
+## Run as `--transport stdio` (optional)
+Override the default `fabric-mcp` command without mapping a port:
 ```
 container run --rm -d --network fabric-network -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp --transport stdio
 ```

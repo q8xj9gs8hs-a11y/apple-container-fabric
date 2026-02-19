@@ -49,12 +49,16 @@ container run --rm -d --name fabric-mcp --network fabric-network -p 8000:8000 -e
   "url": "http://localhost:8000/message"
 }
 ```
+# System Prompt
+Use this system prompt with your MCP client to get the best results: [system_prompt.md](system_prompt.md)
 
-Tasklist:
+---
+
+# Tasklist:
 - [ ] Deep dive into `container run` commands and syntax
 - [ ] Guide through workflow and networking involved
 - [x] Customizing Containerfile `ENTRYPOINT`
 - [ ] Testing and verification techniques, debugging
-- [ ] Add system prompt to complement this workflow
+- [x] Add system prompt to complement this workflow
 - [ ] Additional notes and nuances
 - [ ] Running the MCP server as `stdio`

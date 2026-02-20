@@ -93,7 +93,7 @@ Your `mcp.json` will be configured like so:
 ```
 
 ## System Prompt
-Use this system prompt with your MCP client to get the best results: [system_prompt.md](system_prompt.md)
+Use this system prompt with your MCP client to get the best results: [system.md](system_prompt.md)
 
 ## Tasklist:
 - [ ] Deep dive into `container run` commands and syntax

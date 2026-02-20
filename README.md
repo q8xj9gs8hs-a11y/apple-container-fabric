@@ -37,22 +37,25 @@ container image pull jimscard/fabric-yt:latest
 ```
 mkdir -p "${HOME}/.fabric-config"
 cd "${HOME}/.fabric-config"
+```
+[*Note: If you already have fabric's configuration files in `${HOME}/.config/fabric`, then you can either skip step 8 and mount that directory instead of `${HOME}/.fabric-config`, or run `cp -r ${HOME}/.config/fabric/ ${HOME}/.fabric-config` in place of step 8*]
 
-# Run `fabric --setup` in a container
+8. Run `fabric --setup` in a container
+```
 container run -it --rm -v "${HOME}/.fabric-config:/home/appuser/.config/fabric" jimscard/fabric-yt fabric --setup
 
 # Continue through the setup process for installing patterns, strategies, and configuring your AI vendor and model
 ```
 
 ### Start the REST API and MCP server containers
-8. Run both containers:
+9. Run both containers:
 ```
 container run --rm -d --name fabric-server --network fabric-network -v "${HOME}/.fabric-config:/home/appuser/.config/fabric" jimscard/fabric-yt fabric --serve --address 0.0.0.0:8080
 
 container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fabric-config:/home/appuser/.config/fabric" -p 8000:8000 -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp
 ```
 
-9. Configure your `mcp.json`:
+10. Configure your `mcp.json`:
 ```json
 {
   "mcpServers": {

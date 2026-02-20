@@ -91,6 +91,9 @@ Override the default `fabric-mcp` command without mapping a port. Your `mcp.json
 ## System Prompt
 Use this system prompt with your MCP client to get the best results: [system.md](system.md)
 
+## Testing
+Follow this guide to ensure `fabric-mcp` and `fabric-server` can talk to each other: [container_networking.md](test/container_networking.md)
+
 ## Tasklist:
 - [ ] Deep dive into `container run` commands and syntax
 - [ ] Guide through workflow and networking involved

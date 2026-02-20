@@ -35,11 +35,26 @@ e.g.
   ```
   container system property list | grep dns.domain
   ```
-* Verify you mounted the configuration files to the correct container directory:
   ```
   # Correct
-  /home/appuser/
+  dns.domain         String  fabric-dns         If defined, the local DNS domain to use for containers with unqualified names.
 
   # Incorrect
-  /root/
+  dns.domain         String  *undefined*         If defined, the local DNS domain to use for containers with unqualified names.
+  ```
+* Verify you mounted the configuration files to the correct container directory:
+  ```
+  container exec fabric-server ls -a home/appuser/.config/fabric
+  ```
+  ```
+  # You should see fabric's files
+  .env
+  contexts
+  extensions
+  locales
+  my-custom-patterns
+  patterns
+  sessions
+  strategies
+  unique_patterns.txt
   ```

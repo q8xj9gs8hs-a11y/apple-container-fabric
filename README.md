@@ -97,6 +97,8 @@ Use this system prompt with your MCP client to get the best results: [system.md]
 ## Testing
 Follow this guide to ensure `fabric-mcp` and `fabric-server` can talk to each other: [container_networking.md](test/container_networking.md)
 
+Ensure your MCP client can reach `fabric-mcp`: [host_to_container.md](test/host_to_container.md)
+
 ## Tasklist:
 - [ ] Deep dive into `container run` commands and syntax
 - [ ] Guide through workflow and networking involved

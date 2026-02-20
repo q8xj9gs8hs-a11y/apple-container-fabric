@@ -47,7 +47,7 @@ container run -it --rm -v "${HOME}/.fabric-config:/appuser/.config/fabric" jimsc
 ### Start the REST API and MCP server containers
 8. Run both containers:
 ```
-container run --rm -d --name fabric-server --network fabric-network -v "${HOME}/.fabric-config:/appuser/.config/fabric" jimscard/fabric-yt
+container run --rm -d --name fabric-server --network fabric-network -v "${HOME}/.fabric-config:/appuser/.config/fabric" jimscard/fabric-yt fabric --serve --address 0.0.0.0:8080
 
 container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fabric-config:/appuser/.config/fabric" -p 8000:8000 -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp
 ```

@@ -44,7 +44,7 @@ e.g.
   ```
 * Verify you mounted the configuration files to the correct container directory:
   ```
-  container exec fabric-server ls -a home/appuser/.config/fabric
+  container exec fabric-mcp ls -a home/appuser/.config/fabric
   ```
   ```
   # You should see fabric's files

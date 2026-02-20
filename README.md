@@ -95,7 +95,7 @@ Use this system prompt with your MCP client to get the best results: [system.md]
 - [ ] Deep dive into `container run` commands and syntax
 - [ ] Guide through workflow and networking involved
 - [x] Customizing Containerfile `ENTRYPOINT`
-- [ ] Testing and verification techniques, debugging
+- [x] Testing and verification techniques, debugging
 - [x] Add system prompt to complement this workflow
 - [ ] Additional notes and nuances
 - [x] Running the MCP server as `stdio`

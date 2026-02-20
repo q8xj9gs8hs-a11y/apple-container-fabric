@@ -100,8 +100,11 @@ Follow this guide to ensure `fabric-mcp` and `fabric-server` can talk to each ot
 Ensure your MCP client can reach `fabric-mcp`: [host_to_container.md](test/host_to_container.md)
 
 ## Tasklist:
-- [ ] Deep dive into `container run` commands and syntax
-- [ ] Guide through workflow and networking involved
+- [ ] Explanation on project architecture and workflow
+- [ ] Usage
+- [ ] Requirements
+- [ ] Executable script to start and stop containers
+- [ ] container-compose wrapper for compose yaml
 - [x] Customizing Containerfile `ENTRYPOINT`
 - [x] Testing and verification techniques, debugging
 - [x] Add system prompt to complement this workflow

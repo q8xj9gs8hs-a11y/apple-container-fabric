@@ -39,7 +39,7 @@ mkdir -p "${HOME}/.fabric-config"
 cd "${HOME}/.fabric-config"
 
 # Run `fabric --setup` in a container
-container run -it --rm -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard/fabric-yt fabric --setup
+container run -it --rm -v "${HOME}/.fabric-config:/appuser/.config/fabric" jimscard/fabric-yt fabric --setup
 
 # Continue through the setup process for installing patterns, strategies, and configuring your AI vendor and model
 ```
@@ -47,9 +47,9 @@ container run -it --rm -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard
 ### Start the REST API and MCP server containers
 8. Run both containers:
 ```
-container run --rm -d --name fabric-server --network fabric-network -v "${HOME}/.fabric-config:/root/.config/fabric" jimscard/fabric-yt
+container run --rm -d --name fabric-server --network fabric-network -v "${HOME}/.fabric-config:/appuser/.config/fabric" jimscard/fabric-yt
 
-container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fabric-config:/root/.config/fabric" -p 8000:8000 -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp
+container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fabric-config:/appuser/.config/fabric" -p 8000:8000 -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp
 ```
 
 9. Configure your `mcp.json`:
@@ -64,11 +64,7 @@ container run --rm -d --name fabric-mcp --network fabric-network -v "${HOME}/.fa
 ```
 
 ## Run as `--transport stdio` (optional)
-Override the default `fabric-mcp` command without mapping a port:
-```
-container run --rm -d --network fabric-network -e FABRIC_BASE_URL=http://fabric-server:8080 fabric-mcp --transport stdio
-```
-Your `mcp.json` will be configured like so:
+Override the default `fabric-mcp` command without mapping a port. Your `mcp.json` will be change to:
 ```json
 {
   "mcpServers": {
@@ -79,7 +75,7 @@ Your `mcp.json` will be configured like so:
         "-i",
         "--rm",
         "--network", "fabric-network",
-        "-v", "${HOME}/.fabric-config:/root/.config/fabric",
+        "-v", "${HOME}/.fabric-config:/appuser/.config/fabric",
         "-e", "FABRIC_BASE_URL",
         "fabric-mcp",
         "--transport", "stdio"

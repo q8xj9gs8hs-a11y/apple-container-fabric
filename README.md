@@ -33,12 +33,12 @@ container build -t fabric-mcp .
 container image pull jimscard/fabric-yt:latest
 ```
 
-7. Create fabric's configuration for the bind mount:
+7. Create fabric's configuration directory for the bind mount:
 ```
 mkdir -p "${HOME}/.fabric-config"
 cd "${HOME}/.fabric-config"
 ```
-[*Note: If you already have fabric's configuration files in `${HOME}/.config/fabric`, then you can either skip step 8 and mount that directory instead of `${HOME}/.fabric-config`, or run `cp -r ${HOME}/.config/fabric/ ${HOME}/.fabric-config` in place of step 8*]
+[*Note: If you already have fabric's configuration files in `${HOME}/.config/fabric`, then you can either mount this directory instead of `${HOME}/.fabric-config` and skip step 8, or run `cp -r ${HOME}/.config/fabric/ ${HOME}/.fabric-config` in place of step 8*]
 
 8. Run `fabric --setup` in a container
 ```

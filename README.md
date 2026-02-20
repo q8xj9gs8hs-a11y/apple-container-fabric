@@ -103,3 +103,4 @@ Use this system prompt with your MCP client to get the best results: [system_pro
 - [x] Add system prompt to complement this workflow
 - [ ] Additional notes and nuances
 - [x] Running the MCP server as `stdio`
+- [ ] Bypass setting custom DNS to default

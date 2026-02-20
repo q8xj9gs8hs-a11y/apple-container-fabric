@@ -11,3 +11,22 @@ The presence of this error (not a valid request) verifies the host to container 
 ```json
 {"jsonrpc":"2.0","id":"server-error","error":{"code":-32600,"message":"Not Acceptable: Client must accept text/event-stream"}}
 ```
+# Test `fabric-server`
+You may run an instance of `fabric-server` with an alternative command and port mapping (host `8080` to container `8080`) to ensure it works:
+```
+container run -it --rm -p 8080:8080 -v "${HOME}/.fabric-config:/home/appuser/.config/fabric" jimscard/fabric-yt fabric -l | head -n 10
+```
+```
+# This will list fabric's first 10 patterns in alphabetical order
+
+agility_story
+ai
+analyze_answers
+analyze_bill
+analyze_bill_short
+analyze_candidates
+analyze_cfp_submission
+analyze_claims
+analyze_comments
+analyze_debate
+```

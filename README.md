@@ -89,7 +89,7 @@ Override the default `fabric-mcp` command without mapping a port. Your `mcp.json
 ```
 
 ## System Prompt
-Use this system prompt with your MCP client to get the best results: [system.md](system_prompt.md)
+Use this system prompt with your MCP client to get the best results: [system.md](system.md)
 
 ## Tasklist:
 - [ ] Deep dive into `container run` commands and syntax

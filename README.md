@@ -100,4 +100,4 @@ Use this system prompt with your MCP client to get the best results: [system.md]
 - [ ] Additional notes and nuances
 - [x] Running the MCP server as `stdio`
 - [ ] Bypass setting custom DNS to default
-- [ ] Change fabric image `CMD ["fabric", "--serve"]` to `ENTRYPOINT ["fabric", "--serve", "--address", "0.0.0.0:8080"]`
+- [ ] Change fabric image `CMD ["fabric", "--serve"]` to `ENTRYPOINT ["fabric"] CMD ["--serve", "--address", "0.0.0.0:8080"]`

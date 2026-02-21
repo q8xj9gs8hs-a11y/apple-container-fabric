@@ -99,9 +99,9 @@ Override the default `fabric-mcp` command without mapping a port. Your `mcp.json
 Use this system prompt with your MCP client to get the best results: [system.md](system.md)
 
 ## Testing
-Follow this guide to ensure `fabric-mcp` and `fabric-server` can talk to each other: [container_networking.md](test/container_networking.md)
+Follow this guide to ensure `fabric-mcp` and `fabric-server` can talk to each other: [container_networking.md](tests/container_networking.md)
 
-Ensure your MCP client can reach `fabric-mcp`: [host_to_container.md](test/host_to_container.md)
+Ensure your MCP client can reach `fabric-mcp`: [host_to_container.md](tests/host_to_container.md)
 
 ## Shell script
 A bash script that allows basic management of apple container system and project containers: [apple-container-manager.sh](scripts/apple-container-manager.sh) 

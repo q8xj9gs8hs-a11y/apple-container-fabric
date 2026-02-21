@@ -1,5 +1,5 @@
 # apple-container-fabric
-Run Fabric-AI REST API and MCP server in containers with [apple/container](https://github.com/apple/container.git)
+Run [Fabric-AI](https://github.com/danielmiessler/Fabric.git) REST API and MCP server in containers with [apple/container](https://github.com/apple/container.git)
 
 ## Quickest Setup
 ### First, setup a custom `container` DNS and `network`:
@@ -38,7 +38,11 @@ container image pull jimscard/fabric-yt:latest
 mkdir -p "${HOME}/.fabric-config"
 cd "${HOME}/.fabric-config"
 ```
-[*Note: If you already have fabric's configuration files in `${HOME}/.config/fabric`, then you can either mount this directory instead of `${HOME}/.fabric-config` and skip step 8, or run `cp -r ${HOME}/.config/fabric/ ${HOME}/.fabric-config` in place of step 8*]
+*Note: If you already have fabric's configuration files in `${HOME}/.config/fabric`, choose one:*
+
+a. *Mount `${HOME}/.config/fabric` instead of `${HOME}/.fabric-config`*
+
+b. *Run `cp -r ${HOME}/.config/fabric/ ${HOME}/.fabric-config`*
 
 8. Run `fabric --setup` in a container
 ```
@@ -99,16 +103,24 @@ Follow this guide to ensure `fabric-mcp` and `fabric-server` can talk to each ot
 
 Ensure your MCP client can reach `fabric-mcp`: [host_to_container.md](test/host_to_container.md)
 
+## Shell script
+A bash script that allows basic management of apple container system and project containers: [apple-container-manager.sh](scripts/apple-container-manager.sh) 
+
+Make it executable:
+```
+chmod +x apple-container-manager.sh
+```
+
 ## Tasklist:
 - [ ] Explanation on project architecture and workflow
 - [ ] Usage
 - [ ] Requirements
-- [ ] Executable script to start and stop containers
+- [x] Executable script to start and stop containers
 - [ ] container-compose wrapper for compose yaml
 - [x] Customizing Containerfile `ENTRYPOINT`
 - [x] Testing and verification techniques, debugging
 - [x] Add system prompt to complement this workflow
-- [ ] Additional notes and nuances
 - [x] Running the MCP server as `stdio`
 - [ ] Bypass setting custom DNS to default
 - [ ] Change fabric image `CMD ["fabric", "--serve"]` to `ENTRYPOINT ["fabric"] CMD ["--serve", "--address", "0.0.0.0:8080"]`
+- [ ] Add option to mount an `.env` file to securely store `FABRIC_BASE_URL` environment variable
